@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FraudShield | Credit Card Fraud Detection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">F</span><span>FraudShield</span></div>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="#predict"><span>⌁</span> Transaction Check</a>
+      <div class="sidebar-bottom"><span class="status-dot"></span><div><strong>Detection API</strong><small id="apiStatus">Checking connection...</small></div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">RISK MANAGEMENT / OVERVIEW</div><h1>Credit Card Fraud Detection</h1></div>
+        <div class="api-pill"><span class="pulse"></span> API · localhost:5001</div>
+      </header>
+      <section class="intro">
+        <div><div class="eyebrow light">TRANSACTION ANALYSIS</div><h2>Check a transaction.<br><span>Spot suspicious activity.</span></h2><p>Enter five transaction details to receive a prediction from your trained machine-learning model.</p></div>
+        <div class="shield-art"><div class="shield">✓</div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div></div>
+      </section>
+      <section class="content-grid" id="predict">
+        <div class="panel form-panel">
+          <div class="panel-heading"><div><div class="eyebrow">NEW ANALYSIS</div><h3>Transaction details</h3></div><span class="step">01 / INPUT</span></div>
+          <form id="predictionForm">
+            <div class="field-grid">
+              <label class="field"><span>Transaction Amount</span><input id="TransactionAmount" type="number" min="0" step="0.01" value="2500" required><small>Amount of this payment</small></label>
+              <label class="field"><span>Transaction Frequency</span><input id="TransactionFrequency" type="number" min="0" step="1" value="3" required><small>Number of recent transactions</small></label>
+              <label class="field"><span>Average Transaction Amount</span><input id="AverageTransactionAmount" type="number" min="0" step="0.01" value="1200" required><small>Average amount of recent transactions</small></label>
+              <label class="field"><span>International Transaction</span><select id="InternationalTransaction"><option value="0">No</option><option value="1">Yes</option></select><small>Was this payment international?</small></label>
+              <label class="field"><span>Transaction Hour</span><input id="TransactionHour" type="number" min="0" max="23" step="1" value="14" required><small>Hour of day (0–23)</small></label>
+            </div>
+            <div class="form-footer"><span>All five transaction fields are required.</span><button class="primary-button" type="submit" id="submitBtn">Analyze transaction <span>→</span></button></div>
+          </form>
+        </div>
+        <div class="right-column">
+          <div class="panel result-panel">
+            <div class="panel-heading"><div><div class="eyebrow">MODEL OUTPUT</div><h3>Prediction result</h3></div><span class="step">02 / RESULT</span></div>
+            <div class="result-placeholder" id="resultPlaceholder"><div class="placeholder-icon">⌁</div><strong>Awaiting transaction</strong><p>Complete the form and run an analysis to see the prediction.</p></div>
+            <div class="result-content hidden" id="resultContent">
+              <div class="result-status" id="resultStatus"><span id="resultIcon">✓</span><div><small>CLASSIFICATION</small><strong id="resultText">Legitimate</strong></div></div>
+              <div class="probability-head"><span>Fraud probability</span><strong id="probabilityText">0%</strong></div>
+              <div class="progress-track"><div class="progress-fill" id="probabilityBar"></div></div>
+              <p class="result-note" id="resultNote"></p>
+            </div>
+          </div>
+          <div class="info-card"><div class="info-icon">i</div><div><strong>About this model</strong><p>This demonstration uses synthetic sample data. These fields are human-readable, but the model is not validated for real banking decisions.</p></div></div>
+        </div>
+      </section>
+      <footer>FRAUDSHIELD <span>·</span> MACHINE LEARNING DEMONSTRATION</footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
